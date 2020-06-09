@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Face Detection</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+        }
+        .heading{
+            font-family: 'Roboto', sans-serif;
+        }
+        .shadow{
+            box-: 10px 10px 20px #141414;
+        }
+        .full-width{
+            max-width: 100% !important;
+            width: 100%;
+        }
+        .bg-darker{
+            background-color: #1f1f1f;
+        }
+        .mont{
+            font-family: 'Montserrat', sans-serif;
+        }
+        .img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h5 heading"><b>Criminal Face Texturing From Description</b></span>
+    </nav>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card full-width text-white  bg-danger mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Looking for a Person?</h5>
+                      <p class="card-text">The Criminal face texturing from description could help you find and construct the image of a person whom you could describe</p>
+                      <div class="text-center">
+                          <img height="200px" width="200px" src="/media/incognito.png"  alt="">
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                   {% if result %}
+                        {% for url in result %}
+                            <div class="col col-md-3">
+                                <img class="img" src=/media/{{url}} alt="image">
+                            </div>
+                        {% endfor %}
+                   {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card full-width text-white bg-light  mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title text-dark">Describe The Person</h5>
+                      <p class="card-text text-dark">Describe the personas facial structure, color, race, hairstyle and any other detail that you could recollect about the person. You are free to use the natural <b>English</b> language description, there are no restrictions of format </p>
+                      <form  method="POST">{% csrf_token %}
+                        <input name="description" class="form-control my-2" style="font-size: 13px;" type="text" placeholder=" Enter Description">  
+                        <button class="form-control heading btn btn-dark my-2" type="submit"><b>Generate Face</b></button> 
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
