@@ -5,11 +5,11 @@ sys.path.append('../T2F/implementation')
 from django.shortcuts import render
 import torch as th
 import numpy as np
-import data_processing.DataLoader as dl
+#import data_processing.DataLoader as dl
 import yaml
 from networks.TextEncoder import Encoder
 from networks.ConditionAugmentation import ConditionAugmentor
-from pro_gan_pytorch.PRO_GAN import ConditionalProGAN
+#from pro_gan_pytorch.PRO_GAN import ConditionalProGAN
 from networks.TextEncoder import PretrainedEncoder
 from .extractor import pro_gan
 
